@@ -1,0 +1,23 @@
+{% extends 'flatpages/default.html' %}
+
+{% block title %}
+{% if object %}
+    Редактирование
+{% else %}
+    Создание
+{% endif %}
+{% endblock title %}
+
+{% block content %}
+<h1>{% if object %}Редактирование{% else %}Создание{% endif %}</h1>
+<hr>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Сохранить">
+</form>
+
+<p><a href="{% url 'news_list' %}">← Назад</a></p>
+
+{% endblock content %}
